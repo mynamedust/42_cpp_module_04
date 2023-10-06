@@ -20,5 +20,5 @@ public:
 	virtual void use(ICharacter& target);
 };
 
-
+#include "ICharacter.hpp"
 #endif

@@ -18,6 +18,7 @@ public:
 	Floor &operator=(const Floor &other);
 
 	void drop(AMateria *item);
+	void show();
 };
 
 

@@ -1,5 +1,4 @@
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 
 //Constructors
 AMateria::AMateria() {

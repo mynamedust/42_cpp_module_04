@@ -1,13 +1,12 @@
 #include "Floor.hpp"
 
-
 Floor::Floor() {
 	_items = NULL;
 };
 
 Floor::~Floor() {
 	n_item *start = _items;
-	while (_items->next) {
+	while (_items && _items->next) {
 		_items = _items->next;
 		delete start;
 		start = _items;
@@ -31,12 +30,25 @@ void Floor::drop(AMateria *materia) {
 
 	newitem = new n_item;
 	newitem->item = materia;
+	newitem->next = NULL;
 
 	if (!_items) {
 		_items = newitem;
+//		show();
 		return;
 	}
 	while (_items->next)
 		_items = _items->next;
 	_items->next = newitem;
+//	show();
+}
+
+void Floor::show() {
+	n_item* current = _items;
+
+	while (current != NULL) {
+		std::cout << current->item->getType() << std::endl;
+		current = current->next;
+	}
+	std::cout << std::endl;
 }

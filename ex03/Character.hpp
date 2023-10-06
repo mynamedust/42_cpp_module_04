@@ -2,11 +2,13 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include "Floor.hpp"
 
 class Character : public ICharacter{
 private:
 	AMateria* _inventory[4];
 	string _name;
+	static Floor floor;
 public:
 	Character();
 	Character(const string& name);

@@ -1,6 +1,7 @@
 #include "Character.hpp"
 
-//Constructors
+Floor Character::floor = Floor();
+
 Character::Character() {
 	_name = "*no name*";
 	std::cout << "[Character] " << _name << " created" << std::endl;
@@ -59,7 +60,8 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
 	if (idx >= 0 && idx < 4 && _inventory[idx]) {
-		std::cout << "[Character] " << _name << " dropped " << _inventory[idx]->getType() << " to floor " << std::endl;
+		std::cout << "[Character] " << _name << " dropped " << _inventory[idx]->getType() << " to the floor " << std::endl;
+		Character::floor.drop(_inventory[idx]);
 		_inventory[idx] = NULL;
 	}
 }
