@@ -67,7 +67,9 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (_inventory[idx] != NULL)
+	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL) {
 		std::cout << "[Character] " << _name << " used " << _inventory[idx]->getType() << " on " << target.getName() << std::endl;
+		_inventory[idx]->use(target);
+	}
 }
 
