@@ -29,7 +29,7 @@ int main()
 	std::cout << "----------Leaks test----------" << std::endl;
 	for (int i = 0; i < 6; i++)
 		delete animals[i];
-	system("leaks brain");
+	system("leaks aclass");
 	return 0;
 }
 
