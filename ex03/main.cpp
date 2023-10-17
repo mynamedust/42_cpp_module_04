@@ -2,8 +2,6 @@
 #include "Character.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
-#include "Floor.hpp"
-#include <cstdlib>
 #include "MateriaSource.hpp"
 
 int main() {

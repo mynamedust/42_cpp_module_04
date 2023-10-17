@@ -5,6 +5,7 @@
 typedef std::string string;
 
 class ICharacter;
+
 class AMateria {
 protected:
 	string _type;
