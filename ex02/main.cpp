@@ -2,7 +2,6 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include <sstream>
-#include <cstdlib>
 
 
 int main()
