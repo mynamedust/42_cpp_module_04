@@ -34,7 +34,7 @@ void Brain::addIdea(const string &idea) {
 string Brain::getIdea(unsigned int number) const {
 	if (number >= ideasCount) {
 		std::cout << "Now in this brain " << ideasCount << " ideas. Your idea number is out of range." << std::endl;
-		return "*empty idea*";
+		return "";
 	}
 	return ideas[number];
 }

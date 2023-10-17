@@ -4,7 +4,6 @@
 #include <sstream>
 #include <cstdlib>
 
-
 int main()
 {
 	std::cout << "-------Constructors test-------" << std::endl;
