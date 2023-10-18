@@ -1,5 +1,6 @@
 NAME		= animal
 SRCS		= $(wildcard ./*.cpp)
+INC			= $(wildcard ./*.hpp)
 OBJS_DIR	= ./obj
 OBJS		= $(SRCS:./%.cpp=$(OBJS_DIR)/%.o)
 CC			= c++
@@ -8,7 +9,7 @@ MAKEFILE	= ./Makefile
 
 all: $(NAME)
 
-$(NAME): $(OBJS_DIR) $(OBJS) $(SRCS) $(MAKEFILE)
+$(NAME): $(OBJS_DIR) $(OBJS) $(SRCS) $(MAKEFILE) $(INC)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJS_DIR):
