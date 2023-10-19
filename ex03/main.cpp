@@ -4,7 +4,7 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 
-int main() {
+void test1() {
 	std::cout << "----------Constructors test----------" << std::endl;
 	Character char1("Igor");
 	Character char2("VOVCHIK");
@@ -26,7 +26,6 @@ int main() {
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	delete tmp;
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
@@ -36,8 +35,45 @@ int main() {
 	delete bob;
 	delete me;
 	delete src;
-	delete ice;
-	delete cure;
-	delete tmp;
-	system("leaks aclass");
+}
+
+void test2() {
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+}
+
+void test3() {
+	AMateria* ice1 = new Ice();
+	AMateria* ice2 = new Ice();
+	AMateria* cure1 = new Cure();
+	AMateria* cure2 = new Cure();
+	ICharacter* me = new Character("me");
+
+	me->equip(ice1);
+	me->equip(ice2);
+	me->equip(cure1);
+	me->equip(cure2);
+	me->unequip(1);
+	me->equip(ice2);
+	delete me;
+}
+
+int main() {
+	test1();
+	test2();
+	test3();
+	system("leaks materia");
 }

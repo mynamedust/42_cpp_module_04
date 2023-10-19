@@ -2,6 +2,7 @@
 
 Floor Character::floor = Floor();
 
+//Constructors
 Character::Character() {
 	_name = "*no name*";
 	std::cout << "[Character] " << _name << " created" << std::endl;
@@ -28,6 +29,9 @@ Character::~Character() {
 
 Character::Character(const Character &other) {
 	std::cout << "[Character] " << _name << " copied";
+	for (int i = 0; i < 4; ++i) {
+		_inventory[i] = NULL;
+	}
 	*this = other;
 };
 
@@ -49,12 +53,17 @@ string const& Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
+	int nullSpace = -1;
+
 	for (int i = 0; i < 4; i++) {
-		if (_inventory[i] == NULL) {
-			_inventory[i] = m->clone();
-			std::cout << "[Character] " << _name << " equipped " << m->getType() << " to slot " << i << std::endl;
+		if (_inventory[i] == m)
 			return;
-		}
+		if (_inventory[i] == NULL)
+			nullSpace = i;
+	}
+	if (nullSpace >= 0) {
+		_inventory[nullSpace] = m;
+		std::cout << "[Character] " << _name << " equipped " << m->getType() << " to slot " << nullSpace << std::endl;
 	}
 }
 

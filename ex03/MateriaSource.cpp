@@ -18,6 +18,9 @@ MateriaSource::~MateriaSource() {
 
 MateriaSource::MateriaSource(const MateriaSource &other) {
 	std::cout << "[MateriaSource] copied" << std::endl;
+	for (int i = 0; i < 4; ++i) {
+		_materiaTemps[i] = NULL;
+	}
 	*this = other;
 };
 
@@ -38,14 +41,14 @@ void MateriaSource::learnMateria(AMateria* materia) {
 		if (_materiaTemps[i] == NULL) {
 			_materiaTemps[i] = materia;
 			std::cout << "[MateriaSource] " << materia->getType() << " type materia was learned" << std::endl;
-			break;
+			return;
 		}
 	}
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type) {
-	for (int i = 0; i < 4 && _materiaTemps[i]; i++) {
-		if (_materiaTemps[i]->getType() == type) {
+AMateria* MateriaSource::createMateria(std::string const &type) {
+	for (int i = 3; i >= 0; i--) {
+		if (_materiaTemps[i] && _materiaTemps[i]->getType() == type) {
 			std::cout << "[MateriaSource] " << type << " type materia was created" << std::endl;
 			return _materiaTemps[i]->clone();
 		}
