@@ -4,7 +4,7 @@
 #include <sstream>
 
 
-int main()
+void test1()
 {
 	std::cout << "-------Constructors test-------" << std::endl;
 	Animal *animals[6];
@@ -28,7 +28,10 @@ int main()
 	std::cout << "----------Leaks test----------" << std::endl;
 	for (int i = 0; i < 6; i++)
 		delete animals[i];
+}
+
+int main() {
+	test1();
 	system("leaks aclass");
-	return 0;
 }
 
