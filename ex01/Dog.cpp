@@ -7,7 +7,8 @@ Dog::Dog() : Animal("Dog") {
 
 Dog::~Dog() {
 	std::cout << "Dog destructor called" << std::endl;
-	delete brain;
+	if (brain)
+		delete brain;
 };
 
 Dog::Dog(const Dog &other) : Animal(other){

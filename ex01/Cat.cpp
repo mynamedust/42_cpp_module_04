@@ -7,7 +7,8 @@ Cat::Cat() : Animal("Cat") {
 
 Cat::~Cat() {
 	std::cout << "Cat destructor called" << std::endl;
-	delete brain;
+	if (brain)
+		delete brain;
 };
 
 Cat::Cat(const Cat &other) : Animal(other) {
